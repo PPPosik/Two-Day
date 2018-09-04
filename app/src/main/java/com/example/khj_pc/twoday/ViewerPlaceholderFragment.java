@@ -2,24 +2,23 @@ package com.example.khj_pc.twoday;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.daquexian.flexiblerichtextview.FlexibleRichTextView;
 import com.nishant.math.MathView;
 
 public class ViewerPlaceholderFragment extends Fragment {
 
 
-    private MathView mathView;
+    private FlexibleRichTextView mathView;
 
     public ViewerPlaceholderFragment() {
     }
 
-    public String getText() {
-        return mathView.getText();
-    }
 
     public void setText(String s) {
         mathView.setText(s);

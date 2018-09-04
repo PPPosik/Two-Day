@@ -34,10 +34,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
+import org.scilab.forge.jlatexmath.core.AjLatexMath;
 
 import java.io.File;
 import java.util.List;
 
+import io.github.kbiakov.codeview.classifier.CodeProcessor;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class TexActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
@@ -63,6 +65,9 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
 
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        AjLatexMath.init(this); // init library: load fonts, create paint, etc.
+        CodeProcessor.init(this);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
