@@ -12,7 +12,7 @@ import java.io.File
 object RetrofitUtil {
 
     var retrofit = Retrofit.Builder()
-            .baseUrl("http://52.79.106.90:5000/dev/data")
+            .baseUrl("http://52.79.106.90:5000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
