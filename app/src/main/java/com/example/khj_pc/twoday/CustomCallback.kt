@@ -51,7 +51,10 @@ class CustomCallback(private val context : Context, private val editText : EditT
                     end_string = editText.text.toString().substring(end, editText.text.length)
                     val target : String = "<31fe0826-7bb3-444d-8f2e-6ca06ae24e11>$result"
 
-                    val full_sentence : String = start_string + target + end_string
+                    var full_sentence : String = start_string + target + end_string
+                    full_sentence = full_sentence.replace("\n", "^n")
+                    full_sentence = full_sentence.replace("\\","\\\\")
+                    full_sentence = full_sentence.replace("^n", "\n")
                     sendData(full_sentence, target)
                 }
             }

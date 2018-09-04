@@ -28,6 +28,7 @@ public class PlaceholderFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tex, container, false);
         editText = rootView.findViewById(R.id.editText);
+        editText.setCustomSelectionActionModeCallback(new CustomCallback(getContext(), editText));
 
         return rootView;
     }
