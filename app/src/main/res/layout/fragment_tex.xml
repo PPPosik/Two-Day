@@ -9,11 +9,24 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
-        <EditText
-            android:id="@+id/editText"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:padding="10dp" >
+
+            <EditText
+                android:id="@+id/editText"
+                android:background="@drawable/rounded_edittext"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textCursorDrawable="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

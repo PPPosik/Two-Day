@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TwoDay</string>
+    <string name="app_name">Word Mate</string>
     <string name="title_activity_tex">TexActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

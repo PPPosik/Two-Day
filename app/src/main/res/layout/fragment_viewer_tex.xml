@@ -11,10 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.daquexian.flexiblerichtextview.FlexibleRichTextView
-            android:id="@+id/math_view"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <com.daquexian.flexiblerichtextview.FlexibleRichTextView
+                android:id="@+id/math_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textCursorDrawable="@color/colorPrimary"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
 
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

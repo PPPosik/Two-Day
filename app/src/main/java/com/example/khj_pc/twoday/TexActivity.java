@@ -20,6 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -50,6 +51,8 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
 
     private CustomViewPager mViewPager;
 
+    private boolean fabImgFlag = true;
+
     PlaceholderFragment placeholderFragment = new PlaceholderFragment();
     ViewerPlaceholderFragment viewerPlaceholderFragment = new ViewerPlaceholderFragment();
 
@@ -59,6 +62,8 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
         setContentView(R.layout.activity_tex);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.mipmap.icon_overflow));
         setSupportActionBar(toolbar);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -70,13 +75,21 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
         CodeProcessor.init(this);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String s = placeholderFragment.getText();
                 viewerPlaceholderFragment.setText(s);
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() == 0 ? 1 : 0, true);
+
+                if(fabImgFlag){
+                    fab.setImageResource(R.mipmap.left_arrow);
+                }
+                else{
+                    fab.setImageResource(R.mipmap.right_arrow);
+                }
+                fabImgFlag = !fabImgFlag;
             }
         });
 
