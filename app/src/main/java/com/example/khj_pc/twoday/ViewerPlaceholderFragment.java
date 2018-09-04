@@ -5,30 +5,31 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class PlaceholderFragment extends Fragment {
+import com.nishant.math.MathView;
 
-    private EditText editText;
+public class ViewerPlaceholderFragment extends Fragment {
 
-    public PlaceholderFragment() {
+
+    private MathView mathView;
+
+    public ViewerPlaceholderFragment() {
     }
 
     public String getText() {
-        return editText.getText().toString();
+        return mathView.getText();
     }
 
     public void setText(String s) {
-        editText.setText(s);
+        mathView.setText(s);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_tex, container, false);
-        editText = rootView.findViewById(R.id.editText);
-
+        View rootView = inflater.inflate(R.layout.fragment_viewer_tex, container, false);
+        mathView = rootView.findViewById(R.id.math_view);
         return rootView;
     }
 }

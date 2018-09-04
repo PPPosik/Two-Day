@@ -5,15 +5,16 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaceholderFragment">
+    tools:context=".ViewerPlaceholderFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editText"
+        <com.nishant.math.MathView
+            android:id="@+id/math_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

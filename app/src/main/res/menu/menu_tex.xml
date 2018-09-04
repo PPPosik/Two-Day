@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.khj_pc.twoday.TexActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/get_tex"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title=".tex 파일 가져오기"
         app:showAsAction="never" />
 </menu>
