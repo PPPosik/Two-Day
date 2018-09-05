@@ -7,4 +7,9 @@
         android:orderInCategory="100"
         android:title=".tex 파일 가져오기"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/save_tex"
+        android:orderInCategory="200"
+        android:title=".tex 파일 저장하기"
+        app:showAsAction="never" />
 </menu>

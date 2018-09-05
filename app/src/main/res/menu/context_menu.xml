@@ -3,4 +3,7 @@
     <item
         android:id="@+id/menu_editText"
         android:title="바꾸기" />
+    <item
+        android:id="@+id/menu_save"
+        android:title="저장하기"/>
 </menu>

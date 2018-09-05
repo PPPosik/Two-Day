@@ -1,5 +1,6 @@
 package com.example.khj_pc.twoday;
 
+import android.Manifest;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +39,9 @@ import org.apache.commons.io.FileUtils;
 import org.scilab.forge.jlatexmath.core.AjLatexMath;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import io.github.kbiakov.codeview.classifier.CodeProcessor;
@@ -116,6 +120,19 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
             return true;
         }
 
+        if(id == R.id.save_tex) {
+            if (EasyPermissions.hasPermissions(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                if(placeholderFragment.getText().length() > 0) {
+                    saveFile();
+                } else {
+                    Toast.makeText(getApplicationContext(), "값을 입력하세요!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                EasyPermissions.requestPermissions(this, "tex파일을 저장하기 위해서 권한이 필요합니다", 400, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            }
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -124,6 +141,21 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
         intent.setType("*/*");
         startActivityForResult(Intent.createChooser(intent,
                 "tex 파일을 선택해주세요!"), PICKFILE_RESULT_CODE);
+    }
+
+    private void saveFile() {
+        try {
+            File file = new File( Environment.getExternalStorageDirectory() + "/result.tex");
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(placeholderFragment.getText().getBytes());
+            fos.close();
+            Toast.makeText(getApplicationContext(), "성공적으로 저장했습니다!", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private String getRealPathFromURI(Context context, Uri contentUri) {
@@ -154,12 +186,18 @@ public class TexActivity extends AppCompatActivity implements EasyPermissions.Pe
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-        requestFile();
+        if(requestCode == 300)
+            requestFile();
+        if(requestCode == 400)
+            saveFile();
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
-        EasyPermissions.requestPermissions(this, "tex파일을 가져오기 위해서 권한이 필요합니다", 300, android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(requestCode == 300)
+            EasyPermissions.requestPermissions(this, "tex파일을 가져오기 위해서 권한이 필요합니다", 300, android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(requestCode == 400)
+            EasyPermissions.requestPermissions(this, "tex파일을 저장하기 위해서 권한이 필요합니다", 400, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     }
 
